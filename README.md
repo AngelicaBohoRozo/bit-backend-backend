@@ -1,4 +1,4 @@
-# 🪴 EcoTrack - backend
+# 🪴 EcoTrack - backend "Prueba técnica Autenticación de usuarios"
 
 **Nombre completo:** Angelica Bohorquez Rozo  
 **Entrega 6:** BIT-BACKEND  
@@ -14,13 +14,12 @@
 ---
 ## 📌 Descripción
 
-**EcoTrack** es una API RESTful desarrollada con Node.js y Express, conectada a una base de datos MongoDB Atlas. Permite registrar hábitos sostenibles diarios como:
-
-- Duchas de menos de 5 minutos 🚿  
-- Uso de bicicleta o transporte público 🚲  
-- Rechazo de bolsas plásticas ♻️  
-
-Además, permite manejar usuarios y más adelante incluirá retos semanales y estadísticas.
+**EcoTrack** es una API RESTful desarrollada con Node.js y Express, conectada a una base de datos MongoDB Atlas.
+-  Iniciar sesión autenticado por un JsonWebToken
+-  Utilizar MongoDB para almacenar a los usuarios
+-  Crear una interfaz de usuario que permita registarlo.
+-  Crear una inferfaz que permita iniciar sesión a un usuario ya
+ registrado
 
 ---
 Autor: Angélica Bohorquez Rozo
