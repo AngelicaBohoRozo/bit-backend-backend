@@ -32,4 +32,31 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
+// ... rutas existentes
+
+// 🟢 Ruta GET para obtener los hábitos del usuario autenticado
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const userId = req.usuario._id;
+
+    const habitos = await Habit.find({ usuario: userId });
+    res.status(200).json(habitos);
+  } catch (error) {
+    console.error('Error al obtener hábitos:', error);
+    res.status(500).json({ message: 'Error al obtener hábitos' });
+  }
+});
+
+// Obtener hábitos del usuario autenticado
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const habitos = await Habit.find({ usuario: req.usuario._id }).sort({ creadoEn: -1 });
+    res.json(habitos);
+  } catch (error) {
+    console.error('Error al obtener hábitos:', error);
+    res.status(500).json({ message: 'Error al obtener los hábitos' });
+  }
+});
+
 export default router;
+

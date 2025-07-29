@@ -1,4 +1,5 @@
-import jwt from 'jsonwebtoken'; // 
+// middleware/authMiddleware.js
+import jwt from 'jsonwebtoken';
 
 export const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -8,15 +9,12 @@ export const authMiddleware = (req, res, next) => {
   }
 
   const token = authHeader.split(' ')[1];
-  console.log('🔐 Token recibido:', token); // 
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.usuario = decoded; // Aquí guardo el usuario decodificado
-    console.log('🧍 Usuario decodificado:', decoded); 
+    req.user = decoded; // debe incluir `id` desde el login
     next();
   } catch (error) {
-    console.error('❌ Token inválido:', error);
-    res.status(401).json({ message: 'Token inválido' });
+    return res.status(401).json({ message: 'No autorizado - token inválido' });
   }
 };
